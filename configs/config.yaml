@@ -5,7 +5,7 @@
 data:
   dataset: cifar10
   data_dir: ./data
-  num_workers: 2
+  num_workers: 0
   augmentation: true
 
 model:
@@ -27,3 +27,4 @@ paths:
   results: ./results
 
 seed: 42
+

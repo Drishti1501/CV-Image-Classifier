@@ -7,6 +7,7 @@ Usage:
 """
 
 import argparse
+import multiprocessing
 import json
 import os
 
@@ -61,7 +62,7 @@ def main():
 
     # Data
     data_dir    = cfg.get("data", {}).get("data_dir", "./data")
-    num_workers = cfg.get("data", {}).get("num_workers", 2)
+    num_workers = cfg.get("data", {}).get("num_workers", 0)
     _, test_loader = get_dataloaders(
         data_dir=data_dir, batch_size=args.batch_size,
         num_workers=num_workers, augment=False,
@@ -124,4 +125,8 @@ def main():
 
 
 if __name__ == "__main__":
+    multiprocessing.freeze_support()
     main()
+
+
+

@@ -45,7 +45,7 @@ def get_transforms(augment: bool = True):
 def get_dataloaders(
     data_dir: str = "./data",
     batch_size: int = 128,
-    num_workers: int = 2,
+    num_workers: int = 0,
     augment: bool = True,
 ) -> Tuple[DataLoader, DataLoader]:
     """
@@ -77,3 +77,4 @@ def denormalize(tensor: torch.Tensor) -> torch.Tensor:
     mean = torch.tensor(CIFAR10_MEAN).view(3, 1, 1)
     std  = torch.tensor(CIFAR10_STD).view(3, 1, 1)
     return (tensor * std + mean).clamp(0, 1)
+

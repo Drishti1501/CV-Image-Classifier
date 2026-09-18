@@ -9,8 +9,10 @@ Usage:
 
 import argparse
 import json
+import multiprocessing
 import os
 import random
+import sys
 import time
 
 import numpy as np
@@ -102,7 +104,7 @@ def main():
     set_seed(cfg.get("seed", 42))
     device = get_device(args.device)
     print(f"\n{'='*55}")
-    print(f"  CIFAR-10 CNN Classifier — Training")
+    print(f"  CIFAR-10 CNN Classifier â€” Training")
     print(f"{'='*55}")
     print(f"  Device : {device}")
     print(f"  Epochs : {cfg['training']['epochs']}")
@@ -227,4 +229,6 @@ def main():
 
 
 if __name__ == "__main__":
+    multiprocessing.freeze_support()  # Required on Windows with num_workers > 0
     main()
+
